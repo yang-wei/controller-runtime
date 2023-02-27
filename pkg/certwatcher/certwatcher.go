@@ -162,6 +162,7 @@ func (cw *CertWatcher) handleEvent(event fsnotify.Event) {
 
 	// If the file was removed, re-add the watch.
 	if isRemove(event) {
+		time.Sleep(1 * time.Second)
 		if err := cw.watcher.Add(event.Name); err != nil {
 			log.Error(err, "error re-watching file")
 		}
